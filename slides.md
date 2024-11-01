@@ -3,19 +3,15 @@ title: 표지
 theme: neat
 layout: cover
 colorSchema: light
-coverTitle: 소프트웨어 파괴의 미학
+coverTitle: 인증과 인가 이해하기
 coverAuthor: 이선협 / @kciter
-coverLogo: /logo.png
 ---
-
-<img src="/avatar2.png" width="200px" style="margin-top: 110px" />
-
 
 ---
 title: 발표자 소개
 layout: two-cols
 headerEnable: true
-headerTitle: 소프트웨어 파괴의 미학
+headerTitle: 인증과 인가 이해하기
 colorSchema: dark
 ---
 
