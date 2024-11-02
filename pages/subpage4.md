@@ -50,7 +50,7 @@ headerTitle: 인증과 인가 이해하기
 
 <spacer gap="20" />
 
-```mermaid  {scale: 0.35}
+```mermaid  {scale: 0.4}
 sequenceDiagram
     participant Client as 클라이언트
     participant Server as 서버
@@ -78,7 +78,7 @@ headerTitle: 인증과 인가 이해하기
 
 # 쿠키 방식을 통한 로그인
 
-```mermaid  {scale: 0.4}
+```mermaid  {scale: 0.6}
 sequenceDiagram
     participant User as 사용자 (브라우저)
     participant FrontendPage as 프론트엔드 페이지
@@ -149,7 +149,7 @@ headerTitle: 인증과 인가 이해하기
 
 # 헤더 방식을 통한 로그인
 
-```mermaid  {scale: 0.4}
+```mermaid  {scale: 0.6}
 sequenceDiagram
     participant User as 사용자 (브라우저)
     participant FrontendPage as 프론트엔드 페이지
@@ -220,10 +220,28 @@ headerTitle: 인증과 인가 이해하기
 
 # 잠깐! 프론트엔드 서버에서 토큰을 어떻게 알죠?
 
-* 프론트엔드 서버가 존재하는 Next.js, Nuxt.js, Gatsby.js 등의 SSR 프레임워크
+* 프론트엔드 서버가 존재하는 Next.js, Nuxt.js, Gatsby 등의 SSR 프레임워크
 * 이 경우 페이지 요청시 서버에서 데이터를 결합하여 내려주는 방식이 자주 사용됨
 * 토큰을 어떻게 알 수 있을까?
-  * 로그인 요청 시 프론트엔드 서버를 경유하여 백엔드 서버로 전달
-  * httpOnly 쿠키의 경우 받은 응답을 통해 쿠키를 httpOnly로 저장
-  * 헤더 방식의 경우에도 localStorage 대신 쿠키에 저장하여 서버로 전달
-    * httpOnly는 쓰지 않음
+  * HTTP(Stateless) 환경에서 프론트엔드 서버와 페이지가 같은 토큰을 공유하려면 Cookie가 답
+    * 로그인 요청 시 프론트엔드 서버를 경유하여 백엔드 서버로 전달
+    * httpOnly 쿠키의 경우 받은 응답을 통해 쿠키를 httpOnly로 저장
+    * 헤더 방식의 경우에도 localStorage 대신 쿠키에 저장하여 서버로 전달
+      * httpOnly는 쓰지 않음
+
+
+---
+layout: default
+headerEnable: true
+headerTitle: 인증과 인가 이해하기
+---
+
+# 백엔드 서버와 도메인이 다르다면?
+
+* 도메인이 완전히 다르다면 까다로워짐
+  * SameSite 설정을 None으로 하면 쿠키 전송 가능
+    * HTTPS(Secure) 사용 필수
+  * 서버에서 CORS 설정을 통해 쿠키가 전송될 수 있게 허용해야 함
+  * 혹은 리버스 프록시 서버를 사용하여 쿠키를 전달
+* 서브 도메인 정도 차이라면 쿠키 설정으로 해결 가능
+  * 도메인 설정을 `.example.com`과 같이 설정

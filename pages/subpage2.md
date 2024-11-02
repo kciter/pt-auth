@@ -56,19 +56,25 @@ headerTitle: 인증과 인가 이해하기
 * 구분하여 구현하고 모델링해야 함
 
 ---
-layout: default
+layout: two-cols
 headerEnable: true
 headerTitle: 인증과 인가 이해하기
 ---
 
+::left::
 # 간단한 역할 기반 접근 제어(RBAC) 모델링
-
-```
-Users ---< Accounts
-  |
-  |---< UserRoles >--- Roles ---< RolePermissions >--- Permissions
-```
 
 * Users:Accounts = 1:N
 * Users:Roles = N:M
 * Roles:Permissions = N:M
+
+::right::
+
+```mermaid {scale: 0.55}
+erDiagram
+    Users ||--o{ Accounts : has
+    Users ||--o{ UserRoles : has
+    UserRoles }o--|| Roles : associates
+    Roles ||--o{ RolePermissions : has
+    RolePermissions }o--|| Permissions : grants
+```

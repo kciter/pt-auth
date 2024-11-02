@@ -10,7 +10,7 @@ headerEnable: true
 headerTitle: 인증과 인가 이해하기
 ---
 
-# 토큰은 크게 두 가지로 나뉜다
+# 토큰은 크게 보면 두 가지로 나뉜다
 
 One-Time Token과 Persistent Token
 
@@ -67,14 +67,6 @@ sequenceDiagram
         Server->>Browser: 오류 메시지 반환
     end
 ```
-
----
-layout: center
-headerEnable: true
-headerTitle: 인증과 인가 이해하기
----
-
-# 한 번 사용하면 반드시 폐기
 
 ---
 layout: default
@@ -152,11 +144,15 @@ headerTitle: 인증과 인가 이해하기
 
 * 오해: 토큰은 JWT로 만들어야 한다.
 * 사실: 아니다. JWT가 유용한 경우도 있지만, 다른 방법도 존재
-  * Opaque Token을 사용할 수도 있음
-  * 토큰 자체에는 정보가 없고 서버 또는 데이터베이스에서 토큰을 조회해야 함
+    * Opaque Token을 사용할 수도 있음
+    * 토큰 자체에는 정보가 없고 서버 또는 데이터베이스에서 토큰을 조회해야 함
+
+- - -
 
 * 오해: Refresh Token은 서버에 저장되지 않는다.
 *	사실: Refresh Token은 클라이언트와 서버 모두에서 안전하게 저장되어야 함
+
+- - -
 
 * 오해: Refresh Token은 무한히 재사용할 수 있다.
 * 사실: Refresh Token도 만료 시간이 있으며, 일정 기간 후에는 갱신이 필요
@@ -175,7 +171,6 @@ headerTitle: 인증과 인가 이해하기
 
 - - -
 
-## 연장 방법
 1. Refresh Token Rotation (리프레시 토큰 회전)
     * Refresh Token을 통해 연장 할 때 실행
     * 새로운 Refresh Token을 발급하면서 이전 Refresh Token을 폐기
